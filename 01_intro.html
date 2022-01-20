@@ -1,0 +1,81 @@
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js
+  "></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.querySelector("#root");
+    //tag, property, content
+
+    //JSX로 된 코드를 브라우저가 이해할 수 있게, BAbel 사용
+    //밑에 있는 코드로 바꿔줌
+    const Title = () => (
+      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+        Hello I'm a title
+      </h3>
+    );
+
+    /*
+    const span = React.createElement(
+      "span",
+      {
+        id: "sexy-span",
+        style: { color: "red" },
+        onMouseEnter: () => {
+          console.log("Enter");
+        },
+      },
+      "Hello i'm a span"
+    );
+    */
+
+    //can add listener to property
+    //tag find 없이, 하나의 statement로 태그를 생성 후 eventListener까지 등록
+
+    const Button = () => (
+      <button
+        onClick={() => {
+          console.log("Im clicked");
+        }}
+      >
+        Click me
+      </button>
+    );
+    /*
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => {
+          console.log("im clicked");
+        },
+      },
+      "Click me"
+    );
+    */
+
+    //const container = React.createElement("div", null, [span, btn]);
+    //const container = React.createElement("div", null, [Title, Button]);
+
+    //컴포넌트의 첫번째 글자는 대문자여야 함
+    //<button />이라고 쓰면 html tag button이라고 생각
+    //HTML을 여러 개의 컴포넌트로 분할(대신, 함수화 시켜야함), 재사용 가능
+    const container = (
+      <div>
+        <button> hello! </button>
+        <Title />
+        <Button />
+        <Button />
+        <Button />
+        <Button />
+      </div>
+    );
+
+    ReactDOM.render(container, root);
+    //ReactDOM.render(<Container />, root);
+    //HTML로 만들어서 배치
+    //render means show it to the user
+  </script>
+</html>

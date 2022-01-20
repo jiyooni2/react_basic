@@ -1,0 +1,50 @@
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.querySelector("#root");
+
+    /*Bad way : in button, add eventListener
+    let counter = 0;
+
+    function countUp() {
+      counter++;
+      //innerHTML과 거의 같은 효과
+      render();
+    }
+
+    function render() {
+      //전체를 다 생성한 후 교체하는 것이 아닌, 바뀐 부분만 변화
+      ReactDOM.render(<Container />, root);
+    }
+    */
+
+    //after change counter, update UI automatically
+    const Container = () => {
+      //array의 n번째 요소를 n번째에 넣어줌
+      const [counter, setCounter] = React.useState(0); //data, function
+
+      //button click할 때마다, setCounter() 호출
+      //setCounter는 counter를 counter+1로 셋 해주고
+      //새로 바뀐값으로 바뀐부분만 update
+      const onClick = () => {
+        //또 리렌더링하는 함수 여기저기서 많이 부르면 코드가 복잡해짐
+        console.log(counter);
+        setCounter(counter + 1);
+        //=counter=445646, ReactDom.render....
+      };
+      return (
+        <div>
+          <h3>Total Clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    };
+    //이 코드만 즉시 실행, 위 두 문장은 함수 선언일뿐
+    ReactDOM.render(<Container />, root);
+  </script>
+</html>

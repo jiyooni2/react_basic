@@ -1,0 +1,47 @@
+React.js
+    여러 요소들을 Component화 함
+        divide and conquer
+        reuse many time
+
+Component
+    just a function that return JSX
+
+Props=Properties
+    부모 컴포넌트로부터 자식 컴포넌트로 보내는 방법
+    React 컴포넌트의 재사용을 위해서
+    all the components receives argument, react will give it
+    only one object
+    ex
+        <Btn banana="a"/>
+        =Btn({banana:"a"})
+
+    shortcut
+        Btn({banana})
+            use the "banana" instead of props.banana
+
+    컴포넌트 안에서 onClick={function}
+        모든 props가 전달됨, 함수조차도 넘겨짐
+        이벤트 리스너를 등록하는게 아니라, 그냥 props일 뿐
+            만약에 된다고하면, 컴포넌트의 전부에 이걸 적용할거야? 아니지
+        component 내부에서 이벤트 리스너를 넣어야함
+        props를 가져와서 컴포넌트 내부에서 적용시켜야함
+    
+Memo
+    부모에서 modifier함수가 실행되면, rerender
+        자식들은 모두 rerender됨 -> 불필요한 rendering
+        성능저하 있을 수 있음
+    rerender할 자식들을 고를 수 있음
+    컴포넌트의 props가 변했을 때만, rerender(안바뀌면 not rerender)
+
+Prop Types
+    Prop으로 잘못된 type을 넘겨주는 에러를 방지
+        get warning message
+    어떤 타입의 prop을 받는지
+    
+    MemorizedBtn.propTypes = {
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number.isRequired,
+    };
+    
+    just warning, still running
+

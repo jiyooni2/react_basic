@@ -1,0 +1,26 @@
+Effect
+    Why need effect?
+        when state changes, function runs again, render(return) again
+        But if we want to call function(render) only in the first call
+        첫 실행때만 데이터 가져오는 그런 상황
+        어떤 상황에서 코드를 실행할 것인지 결정할 수 있음
+    
+    useEffect(callback,deps)
+        we can choose when to run
+        when deps changes, callback runs.
+        at the 1st render, runs callback
+            [] : 지켜볼 게 없으니 한번만 실행(Component 생성 시)
+                Component 생성, 삭제 반복한다면 계속 실행되겠지
+        useEffect(() => {
+            console.log("Search for", keyword);
+        }, [keyword]); //keyword가 변할때만 실행
+
+    callback function can return cleanup function
+        생성될때 뿐만 아니라, destroy 될 때도, useEffect의 function 작동하게
+        useEffect 내부에 return하면 destroy 할 때 함수 실행
+        log 생성, data 보내는 것 등 할 수 있음 
+
+
+
+
+    

@@ -1,0 +1,13 @@
+create-react-app
+    npx create-react-app@latest my-app
+    자동 reload
+
+css 적용
+    1. import css file to index file 
+    2. import css file to each file
+        > CSS modularization
+        className={styles.btn}
+        랜덤 class name을 가짐, className을 외울 필요가 없어짐
+        여기저기서 같은 className을 쓴다 해도, 전혀 문제되지 않음
+        
+    3. inline css (prop에 쓰기 style={{...}})    

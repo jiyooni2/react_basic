@@ -1,0 +1,81 @@
+https://jaeyeophan.github.io/2018/01/02/React-tips-for-beginners/
+
+Form
+    HTML에서의 form의 button은 submit 불러일으킴
+
+event.preventDefault()
+    prevent browser refresh page
+
+array
+    const array=[newItem,...oldArray]
+
+
+언제 setState 가 비동기적인가요?
+    현재 setState 는 이벤트 핸들러 내에서 비동기적입니다.
+    이로 인해 부모와 자식이 모두 click 이벤트에서 setState를 호출한다면 자식은 두 번 렌더링되지 않습니다. 대신 React는 브라우저 이벤트가 끝날 시점에 state를 일괄적으로 업데이트합니다. 이는 더 큰 규모의 앱에서 뚜렷한 성능 향상을 만들어냅니다.
+    이것은 구현 세부사항이므로 전적으로 의존해선 안됩니다. 추후 React는 기본적으로 더 많은 경우에서 일괄적으로 업데이트를 처리할 예정입니다.
+
+state
+    object, state 자체를 바꾸는 것 자체가 불가능한 일
+    
+fetch
+    request -> get Promise object
+
+Response.json()
+    json -> JS object
+
+Component
+    key값 있어야함
+        react.js에서 컴포넌트들을 렌더링할 때 사용
+    
+React Router
+    change the url
+    Router별로 생각하자
+    App.js  renders Router
+    Router
+        url을 보고 있는 component
+        자신에게 맞는 url에 오면, Component를 rendering
+
+React Router dom
+    import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+    } from "react-router-dom";
+
+    in 1st arg, BrowserRouter vs HashRouter
+        BrowserRouter : address/home(평소 알고 있는 url과 같음)
+        HashRouter : address/#/home
+
+
+    Route means url, finds the Router, render the Component
+
+    <Router>
+      <Switch>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+
+    Switch components means we only render one Route at aonce
+    한번에, 2개 렌더링 할 수도 있기는 함
+
+    useParams()
+        get the url params
+
+href
+    a href="..." : re-rendering the whole page
+    reload 피하기 위해서, Link Component사용
+
+gh-pages
+    html+css+js 만들면 웹사이트로 만들어서 전세계에 무료로 배포해줌
+    npm run build
+        production ready
+            code압축, 모든게 최적화
+
+    gh-pages -d build
+        package.json의 homepage에 웹사이트에 업로드 되도록 하는 것
+        
+    
